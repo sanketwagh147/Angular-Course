@@ -1,0 +1,86 @@
+<!-- To uses event binding use (<event name> )="<call method()>" -->
+<!-- Event binding pass event on user action -->
+<!-- <input type="text" class="form-control" (input)="onServerNameInput($event)" /> -->
+
+<!-- Two way data binding -->
+<!-- <input type="text" class="form-control" [(ngModel)]="serverName" />
+<button
+  (click)="changeServerColor()"
+  class="btn btn-primary"
+  [disabled]="!allowNewUser"
+>
+  Add server
+</button>
+<div>{{ serverName }}</div> -->
+<!-- <div>{{ allowNewUser }}</div> -->
+
+<!-- If else condition in ngIF -->
+<!-- <div class="added" *ngIf="serverCreated">{{ serverStatus }}</div> -->
+
+<!-- to use if else add marker -->
+<!-- Using ngStyle -->
+<!-- <div
+  class=""
+  [ngStyle]="{ backgroundColor: getColor() }"
+  *ngIf="serverCreated; else noServer"
+>
+  {{ serverStatus }}
+</div> -->
+<!-- <div
+  class=""
+  [ngStyle]="{ backgroundColor: getColor() }"
+  *ngIf="serverCreated; else noServer"
+>
+  {{ serverStatus }}
+</div>
+<ng-template #noServer
+  ><p>No server will be shown if not created</p></ng-template
+>
+<div
+  [ngClass]="{ added: isServerOnline() }"
+  *ngIf="isServerOnline; else serverOffline"
+>
+  Online
+</div>
+<ng-template #serverOffline>Offline</ng-template> -->
+<!-- <input type="text" [value]="getRandomNumber" /> -->
+<!-- <app-server> server 1</app-server> -->
+<!-- <app-server data-id="2"> server 1</app-server> -->
+
+<!-- <app-warning></app-warning> -->
+
+<!-- <div class="app-server"> -->
+<!-- SERVER 2 This is used when class selecor is used in app server -->
+<!-- </div> -->
+<!-- <button class="btn btn-warning" (click)="showDetails = !showDetails"> -->
+<button class="btn btn-warning" (click)="showDetail()">show Details</button>
+<div *ngIf="showDetails">Kanda</div>
+<div class="row">
+  <div
+    *ngFor="let item of logs"
+    [ngStyle]="{ backgroundColor: item % 2 == 0 ? 'red' : 'green' }"
+    [ngClass]="{ white: item == 2 }"
+  >
+    {{ item }}
+  </div>
+</div>
+
+<button class="btn btn-danger" (click)="showDetail2()">show details 2</button>
+<div *ngIf="showDetails2"></div>
+<div class="row">
+  <div
+    *ngFor="let item of logs2; let i = index"
+    [ngStyle]="{ backgroundColor: i % 2 == 0 ? 'red' : 'green' }"
+    [ngClass]="{ white: i == 2 }"
+  >
+    {{ item }}
+  </div>
+</div>
+
+<div class="row">
+  <label for="server"> Add server</label>
+  <input type="text" class="form-control" [(ngModel)]="serverName" />
+  <p>{{ serverName }}</p>
+  <button (click)="addServer()" class="btn btn-primary">User</button>
+  <app-server *ngFor="let server of servers"></app-server>
+</div>
